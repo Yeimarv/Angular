@@ -1,0 +1,100 @@
+<form class="my-5" (ngSubmit)="create()" [formGroup]="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-3">
+                <p class="h3">Cotización en línea</p>
+            </div>
+
+            <div class="col-12 col-md-6 mb-3">
+                <div class="form-group">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Nombre de la persona</mat-label>
+                        <input matInput formControlName="nombre" type="text">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <div class="form-group">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Apellido de la persona</mat-label>
+                        <input matInput formControlName="apellido" type="text">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <div class="form-group">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Teléfono de la persona</mat-label>
+                        <input matInput formControlName="telefono" type="number">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <div class="form-group">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Dirección de la persona</mat-label>
+                        <input matInput formControlName="direccion" type="text">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <div class="form-group">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Servicios</mat-label>
+                        <mat-select formControlName="servicios" multiple>
+                            <mat-option *ngFor="let servicio of servicios" [value]="servicio">
+                                {{servicio.nombre}} ->
+                                <span *ngIf="servicio.desde > 0 "> Desde ${{servicio.desde | number}}</span>
+                                <span *ngIf="servicio.hasta > 0 "> Hasta ${{servicio.hasta | number}}</span>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 mb-3">
+                <div class="form-group">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Más detalles u observaciones</mat-label>
+                        <input matInput formControlName="observaciones" type="text">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <p>Lista de la cotización <strong class="text-success text-lowercase" *ngIf="form.value.nombre">({{form.value.nombre}})</strong></p>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Servicio</th>
+                                        <th>Valor desde</th>
+                                        <th>Valor hasta</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let servicio of form.value.servicios">
+                                        <td>{{servicio.nombre }}</td>
+                                        <td>{{servicio.desde }}</td>
+                                        <td>{{servicio.hasta}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12 col-md-6 mb-3 mx-auto text-center">
+                <p class="text-danger">Debes completar los campos obligatiorios (<b class="text-danger">*</b>)</p>
+                <button class="btn btn-primary btn-lg" [disabled]="!form.valid">Enviar información</button>
+            </div>
+        </div>
+    </div>
+</form>

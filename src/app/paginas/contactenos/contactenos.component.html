@@ -1,0 +1,42 @@
+<h1 id="tx1">TecnoReparaciones- Mantenimiento a Equipo de Computo</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <form [formGroup]="myform" (ngSubmit)="submit()">
+        <p>Nombre:
+          <input type="text" class="form-control" formControlName="nombres" required>
+        </p>
+
+        <p>Apellidos:
+          <input type="text" class="form-control" formControlName="apellidos" required>
+        </p>
+
+        <p>Mail:
+          <input type="text" class="form-control" formControlName="mail">
+        </p>
+        <p>Telefono:
+          <input type="text" class="form-control" formControlName="telefono" required>
+        </p>
+
+        <p>Mensaje<br>
+          <textarea class="form-control" rows="10" cols="70" formControlName="mensaje"></textarea>
+        </p>
+        <button type="submit" class="btn btn-primary">Confirmar</button>
+      </form>
+    </div>
+
+    <div class="col-lg-6">
+      <img src="https://blogdelasecretaria.files.wordpress.com/2016/01/19-secretaria.png?w=900" class="img-fluid">
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
